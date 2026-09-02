@@ -64,7 +64,7 @@ const LS_KEY = 'ascent.db.v4';
 const newId = (p = 'u') => `${p}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
 
 /** Credentials for the first administrator, created automatically on first run. */
-export const BOOTSTRAP = { userId: 'admin', password: 'Ascent@2024' };
+export const BOOTSTRAP = { userId: 'sumina@2011', password: 'sumina#123' };
 
 function empty(): LocalDB {
   return {
