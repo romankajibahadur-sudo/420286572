@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-night-950: #060b10;
+  --color-night-900: #0b1218;
+  --color-night-800: #101a22;
+  --color-night-700: #18242e;
+  --color-night-600: #22303c;
+
+  --color-sand-50: #faf7f1;
+  --color-sand-100: #f4efe4;
+  --color-sand-200: #e9e1cf;
+  --color-sand-300: #d9cbb0;
+
+  --color-ember-100: #ffe9dd;
+  --color-ember-200: #ffd3bb;
+  --color-ember-300: #ffb38a;
+  --color-ember-400: #ff8b57;
+  --color-ember-500: #f2692e;
+  --color-ember-600: #de561f;
+  --color-ember-700: #bb4517;
+
+  --color-glacier-100: #e3f2f4;
+  --color-glacier-300: #a5d3da;
+  --color-glacier-500: #5296a3;
+
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --shadow-lift: 0 18px 40px -18px rgb(6 11 16 / 0.28);
+  --shadow-card: 0 2px 10px -2px rgb(6 11 16 / 0.08), 0 12px 32px -12px rgb(6 11 16 / 0.14);
+
+  --animate-kenburns: kenburns 26s ease-in-out infinite alternate;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 11s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+
+  @keyframes kenburns {
+    from { transform: scale(1.04) translateY(0); }
+    to { transform: scale(1.16) translateY(-1.5%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(0.82); }
+  }
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-sand-50 text-night-900 font-sans antialiased text-[15.5px] leading-relaxed;
+  }
+  ::selection {
+    background: var(--color-ember-500);
+    color: #fff;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-sand-100);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c8bda6;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-ember-500);
+  }
+  img {
+    @apply select-none;
+  }
+  input, select, textarea, button {
+    font: inherit;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ember-500);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[80rem] px-5 sm:px-8 lg:px-10;
+  }
+  .glass {
+    background: rgb(255 255 255 / 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  .glass-dark {
+    background: rgb(11 18 24 / 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  .text-shadow-hero {
+    text-shadow: 0 2px 30px rgb(6 11 16 / 0.55);
+  }
+  /* prayer-flag accent strip */
+  .prayer-strip {
+    background: linear-gradient(
+      90deg,
+      #3b6fd4 0 20%,
+      #f2f2ee 20% 40%,
+      #d9432f 40% 60%,
+      #2f9e5f 60% 80%,
+      #e8b429 80% 100%
+    );
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .card-hover {
+    @apply transition-all duration-500 will-change-transform;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}
